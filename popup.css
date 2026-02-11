@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+/* ── Reset & Base ─────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Design Tokens ────────────────────────────────────── */
+:root {
+  --bg:          #0f1117;
+  --surface:     #1a1d27;
+  --surface-alt: #22263a;
+  --border:      #2e334d;
+  --accent:      #4f8ef7;
+  --accent-glow: rgba(79, 142, 247, 0.18);
+  --danger:      #e05c5c;
+  --danger-glow: rgba(224, 92, 92, 0.15);
+  --text-primary:   #e8eaf6;
+  --text-secondary: #7a82a8;
+  --text-muted:     #4a5070;
+  --radius:   10px;
+  --radius-sm: 6px;
+  --transition: 0.18s ease;
+}
+
+/* ── Body / Popup Shell ───────────────────────────────── */
+body {
+  width: 260px;
+  padding: 18px 16px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.5;
+  /* subtle noise texture */
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -10%, rgba(79,142,247,0.07) 0%, transparent 70%);
+}
+
+/* ── Heading ──────────────────────────────────────────── */
+h3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+/* ── Divider ──────────────────────────────────────────── */
+h3::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
+  margin-top: 6px;
+}
+
+/* ── Select ───────────────────────────────────────────── */
+select {
+  width: 100%;
+  padding: 9px 36px 9px 12px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--surface);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a82a8' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+select:hover {
+  border-color: #3d4468;
+  background-color: var(--surface-alt);
+}
+
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+select option {
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+/* ── Stop Button ──────────────────────────────────────── */
+#stopBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 9px 14px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    box-shadow var(--transition);
+}
+
+/* stop icon via pseudo-element */
+#stopBtn::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--danger);
+  flex-shrink: 0;
+  transition: opacity var(--transition);
+}
+
+#stopBtn:hover {
+  background-color: var(--danger-glow);
+  border-color: var(--danger);
+  color: #f08080;
+  box-shadow: 0 0 0 3px var(--danger-glow);
+}
+
+#stopBtn:hover::before {
+  opacity: 0.9;
+}
+
+#stopBtn:active {
+  transform: scale(0.98);
+}

@@ -1,23 +1,27 @@
 {
-    "manifest_version": 3,
-    "version": "1.0",
-    "name": "speakit",
-    "description": "Speak selected text",
-    "icons": {
-        "16": "icons/volumeIcon-32.png",
-        "32" : "icons/volumeIcon-48.png",
-        "48": "icons/volumeIcon-48.png",
-        "128": "icons/volumeIcon-16.png"
-    },
+  "manifest_version": 3,
+  "version": "2.0",
+  "name": "SpeakIt",
+  "description": "Speak selected text from any webpage",
+  
+  "icons": {
+    "16": "icons/volumeIcon-16.png",
+    "32": "icons/volumeIcon-32.png",
+    "48": "icons/volumeIcon-48.png",
+    "128": "icons/volumeIcon-48.png"
+  },
 
-    "background": {
-        "service_worker": "eventPage.js"
-    }, 
+  "background": {
+    "service_worker": "eventPage.js"
+  },
 
-    "permissions": [
-        "contextMenus",
-        "tts"
-    ]
+  "action": {
+    "default_popup": "popup.html"
+  },
 
-
+  "permissions": [
+    "contextMenus",
+    "tts",
+    "storage"
+  ]
 }

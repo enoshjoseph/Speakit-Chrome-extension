@@ -8,11 +8,23 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.contextMenus.onClicked.addListener((info) => {
     if (info.menuItemId === "speak" && info.selectionText) {
-        chrome.tts.stop();
-        chrome.tts.speak(info.selectionText, {
-            rate: 0.7,
-            pitch: 1.0,
-            volume: 1.0
+
+        chrome.storage.local.get("voiceName", (data) => {
+
+            chrome.tts.stop();
+
+            chrome.tts.speak(info.selectionText, {
+                voiceName: data.voiceName || undefined,
+                rate: 1.0
+            });
+
         });
+    }
+});
+
+// 🔥 Listen for Stop message
+chrome.runtime.onMessage.addListener((message) => {
+    if (message.action === "stopSpeech") {
+        chrome.tts.stop();
     }
 });
