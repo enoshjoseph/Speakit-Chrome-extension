@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "version": "1.0",
+    "name": "speakit",
+    "description": "Speak selected text",
+    "icons": {
+        "16": "icons/volumeIcon-32.png",
+        "32" : "icons/volumeIcon-48.png",
+        "48": "icons/volumeIcon-48.png",
+        "128": "icons/volumeIcon-16.png"
+    },
+
+    "background": {
+        "service_worker": "eventPage.js"
+    }, 
+
+    "permissions": [
+        "contextMenus",
+        "tts"
+    ]
+
+
+}
